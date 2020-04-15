@@ -15,6 +15,8 @@
 		B8D8101D2446DC51000C6366 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8D8101B2446DC51000C6366 /* LaunchScreen.storyboard */; };
 		B8D810282446DC51000C6366 /* CommonKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D810272446DC51000C6366 /* CommonKitTests.swift */; };
 		B8D810332446DC51000C6366 /* CommonKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D810322446DC51000C6366 /* CommonKitUITests.swift */; };
+		B8D810462446E2C3000C6366 /* UIView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D810442446E2C3000C6366 /* UIView+Extention.swift */; };
+		B8D810472446E2C3000C6366 /* UIColor+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D810452446E2C3000C6366 /* UIColor+Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		B8D8102E2446DC51000C6366 /* CommonKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D810322446DC51000C6366 /* CommonKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonKitUITests.swift; sourceTree = "<group>"; };
 		B8D810342446DC51000C6366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8D810442446E2C3000C6366 /* UIView+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extention.swift"; sourceTree = "<group>"; };
+		B8D810452446E2C3000C6366 /* UIColor+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extention.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 		B8D810412446DCAC000C6366 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B8D810482446E2D4000C6366 /* Extensions */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -150,6 +155,15 @@
 				B8D810162446DC50000C6366 /* Main.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B8D810482446E2D4000C6366 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B8D810452446E2C3000C6366 /* UIColor+Extention.swift */,
+				B8D810442446E2C3000C6366 /* UIView+Extention.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,7 +299,9 @@
 			files = (
 				B8D810152446DC50000C6366 /* ViewController.swift in Sources */,
 				B8D810112446DC50000C6366 /* AppDelegate.swift in Sources */,
+				B8D810472446E2C3000C6366 /* UIColor+Extention.swift in Sources */,
 				B8D810132446DC50000C6366 /* SceneDelegate.swift in Sources */,
+				B8D810462446E2C3000C6366 /* UIView+Extention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
