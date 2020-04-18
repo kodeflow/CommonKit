@@ -77,7 +77,8 @@ class FilePickerController: UIAlertController {
 }
 
 extension FilePickerController {
-    private func takeCamera() {
+    /// 直接拍照（不显示界面）
+    func takeCamera() {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
             DispatchQueue.main.async {
                 self.takeGalery()
@@ -92,7 +93,8 @@ extension FilePickerController {
         root?.present(cameraPicker, animated: true, completion: nil)
     }
     
-    private func takeGalery() {
+    /// 直接读取相册（不显示界面）
+    func takeGalery() {
         let  cameraPicker = UIImagePickerController()
         cameraPicker.delegate = self
         cameraPicker.allowsEditing = false
@@ -111,7 +113,8 @@ extension FilePickerController {
         root?.present(cameraPicker, animated: true, completion: nil)
     }
     
-    private func takeFile() {
+    /// 直接选取文件（不显示界面）
+    func takeFile() {
         let documentController = UIDocumentPickerViewController(documentTypes: UTIs, in: .open)
         documentController.modalPresentationStyle = .formSheet
         documentController.delegate = self

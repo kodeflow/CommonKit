@@ -24,12 +24,24 @@ class ViewController: UIViewController {
 
 extension ViewController {
     @IBAction func actionHandleTap(_ sender: Any) {
-        let alert = FilePickerController(title: nil, message: "请选择附件", preferredStyle: .actionSheet)
+        // 1. 如果你需要展示FilePicker界面
+//        let alert = FilePickerController(title: nil, message: "请选择附件", preferredStyle: .actionSheet)
+//        alert.delegate = self
+//        alert.items = [.galery, .file]
+//        alert.takeCamera()
+//        // 不能使用UIAlertController.addAction方法
+//        // alert.addAction(UIAlertAction(title: "拍照", style: .default, handler: nil))
+//        present(alert, animated: true, completion: nil)
+        
+        // 2. 不显示界面，直接拍照
+        takeCamera()
+    }
+    
+    // 不显示界面，直接拍照
+    private func takeCamera() {
+        let alert = FilePickerController()
         alert.delegate = self
-        alert.items = [.galery, .file]
-        // 不能使用UIAlertController.addAction方法
-        // alert.addAction(UIAlertAction(title: "拍照", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+        alert.takeCamera()
     }
     
     @IBAction func actionPreview(_ sender: Any) {
