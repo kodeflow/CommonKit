@@ -21,12 +21,12 @@ public enum FilePickerStyle: String {
 }
 
 public class FilePickerController: UIAlertController {
-    
+    /// 控制actionSheet弹出的项，目前支持【拍照，相册，文件】
     public var items: [FilePickerStyle] = [.camera, .galery, .file]
     /// 控制可以选择的文件类型
     public var UTIs = ["public.content", "public.text", "public.source-code ", "public.image", "public.audiovisual-content", "com.adobe.pdf", "com.apple.keynote.key", "com.microsoft.word.doc", "com.microsoft.excel.xls", "com.microsoft.powerpoint.ppt"
     ]
-    
+    /// 用于选择文件后的回调，在filePicker(_ picker: , didSelect url: , and)中处理选择的文件
     public var delegate: FilePickerControllerDelegate?
     
     private var _root: UIViewController?
@@ -188,9 +188,10 @@ extension FilePickError: Swift.Error{
 
 fileprivate extension Data {
     func write(as fileName: String? = nil) -> URL? {
-        let librayCachesURL = FileManager.default.librayCachesURL()
+        // 放在tmp文件夹下，可以被及时清除
+        let temporaryDirectory = FileManager.default.temporaryDirectory
         let targetName = fileName ?? randomName()
-        let targetURL = librayCachesURL.appendingPathComponent(targetName)
+        let targetURL = temporaryDirectory.appendingPathComponent(targetName)
         do {
             try self.write(to: targetURL)
             return targetURL
