@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol FilePickerControllerDelegate {
     func filePicker(_ picker: FilePickerController, didSelect url: URL?, and data: Data?)
@@ -102,10 +103,10 @@ extension FilePickerController {
         button.setTitle("取消", for: .normal)
         button.addTarget(self, action: #selector(self.actionBack(_:)), for: .touchUpInside)
         cameraPicker.navigationBar.addSubview(button)
-//        button.snp.makeConstraints({ (make) in
-//            make.centerY.equalToSuperview()
-//            make.trailing.equalToSuperview().offset(-15)
-//        })
+        button.snp.makeConstraints({ (make) in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-15)
+        })
         //在需要的地方present出来
         root?.present(cameraPicker, animated: true, completion: nil)
     }
