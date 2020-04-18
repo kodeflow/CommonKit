@@ -9,7 +9,7 @@
 import UIKit
 
 // 将字符串转成UIColor
-extension UIColor {
+public extension UIColor {
      
     // Hex String -> UIColor
     convenience init(_ hexString: String) {
@@ -68,7 +68,7 @@ extension UIColor {
     }
 }
 
-extension UIColor {
+public extension UIColor {
     /// 讲字符串转换成UIColor对象
     ///
     /// - Parameter hex: 格式要求："#ffffff | 0xffffff | ffffff"

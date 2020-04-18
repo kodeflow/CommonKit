@@ -8,14 +8,14 @@
 
 import UIKit
 
-let ScreenWidth = UIScreen.main.bounds.width
-let ScreenHeight = UIScreen.main.bounds.height
-let StatusBarHeight = UIApplication.shared.statusBarFrame.size.height
-let iPhone = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone)
-let iPhoneX = (ScreenHeight >= 812.0 && ScreenWidth >= 375.0 && iPhone)
-let tabBarHeight = (CGFloat)(iPhoneX ? (49.0 + 34.0) : (49.0))
+public let ScreenWidth = UIScreen.main.bounds.width
+public let ScreenHeight = UIScreen.main.bounds.height
+public let StatusBarHeight = UIApplication.shared.statusBarFrame.size.height
+public let iPhone = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone)
+public let iPhoneX = (ScreenHeight >= 812.0 && ScreenWidth >= 375.0 && iPhone)
+public let tabBarHeight = (CGFloat)(iPhoneX ? (49.0 + 34.0) : (49.0))
 
-extension UIView {
+public extension UIView {
     
     // MARK: @IBInspectable
     @IBInspectable var cornerRadius: CGFloat {
@@ -117,7 +117,7 @@ extension UIView {
 }
 
 // Alerts and Pickers
-extension UIView {
+public extension UIView {
     func searchVisualEffectsSubview() -> UIVisualEffectView? {
         if let visualEffectView = self as? UIVisualEffectView {
             return visualEffectView
@@ -160,7 +160,7 @@ extension UIView {
     }
 }
 
-extension UIView {
+public extension UIView {
     func constrainToEdges(_ subview: UIView) {
       
       subview.translatesAutoresizingMaskIntoConstraints = false

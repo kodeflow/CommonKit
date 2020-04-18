@@ -9,18 +9,18 @@
 import UIKit
 import SnapKit
 
-protocol FilePickerControllerDelegate {
+public protocol FilePickerControllerDelegate {
     func filePicker(_ picker: FilePickerController, didSelect url: URL?, and data: Data?)
     func filePicker(_ picker: FilePickerController, didFailedWith err: FilePickError)
 }
 
-enum FilePickerStyle: String {
+public enum FilePickerStyle: String {
     case camera = "拍照"
     case galery = "相册"
     case file = "文件"
 }
 
-class FilePickerController: UIAlertController {
+public class FilePickerController: UIAlertController {
     
     var items: [FilePickerStyle] = [.camera, .galery, .file]
     /// 控制可以选择的文件类型
@@ -50,7 +50,7 @@ class FilePickerController: UIAlertController {
         }
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         guard let _ = delegate else {
             fatalError("没有实现 FilePickerControllerDelegate 代理")
@@ -71,12 +71,12 @@ class FilePickerController: UIAlertController {
         super.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
     }
     
-    override func addAction(_ action: UIAlertAction) {
+    public override func addAction(_ action: UIAlertAction) {
         fatalError("请使用 items 属性来控制样式")
     }
 }
 
-extension FilePickerController {
+public extension FilePickerController {
     /// 直接拍照（不显示界面）
     func takeCamera() {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
@@ -135,12 +135,12 @@ extension FilePickerController {
 // 处理用户选择的数据
 extension FilePickerController: UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         root?.dismiss(animated: true, completion: nil)
         delegate?.filePicker(self, didFailedWith: .cancel)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         root?.dismiss(animated: true, completion: nil)
         if let url = info[.imageURL] as? URL {
             delegate?.filePicker(self, didSelect: url, and: nil)
@@ -151,7 +151,7 @@ extension FilePickerController: UIDocumentPickerDelegate, UIImagePickerControlle
         }
     }
     
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         guard url.startAccessingSecurityScopedResource() else {
             // 授权文件失败 grantFailedError
             delegate?.filePicker(self, didFailedWith: .grantFailedError)
@@ -176,7 +176,7 @@ extension FilePickerController: UIDocumentPickerDelegate, UIImagePickerControlle
     
 }
 
-enum FilePickError: String {
+public enum FilePickError: String {
     case grantFailedError
     case readFailedError
     case cancel
