@@ -140,7 +140,7 @@ Pod::Spec.new do |spec|
   spec.dependency "Moya/RxSwift", "~> 13.0.1"
   spec.dependency "RxSwift", "~> 4.5.0"
   spec.dependency "ObjectMapper", "~> 3.5.1"
-  spec.dependency "SDWebImage", "~> 5.3.2"
+  # spec.dependency "SDWebImage", "~> 5.3.2"
   spec.dependency "SnapKit", "~> 5.0.1"
   spec.dependency "Onboard", "~> 2.3.3"
   spec.dependency "MJRefresh", "~> 3.2.3"

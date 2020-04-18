@@ -22,12 +22,12 @@ public enum FilePickerStyle: String {
 
 public class FilePickerController: UIAlertController {
     
-    var items: [FilePickerStyle] = [.camera, .galery, .file]
+    public var items: [FilePickerStyle] = [.camera, .galery, .file]
     /// 控制可以选择的文件类型
-    var UTIs = ["public.content", "public.text", "public.source-code ", "public.image", "public.audiovisual-content", "com.adobe.pdf", "com.apple.keynote.key", "com.microsoft.word.doc", "com.microsoft.excel.xls", "com.microsoft.powerpoint.ppt"
+    public var UTIs = ["public.content", "public.text", "public.source-code ", "public.image", "public.audiovisual-content", "com.adobe.pdf", "com.apple.keynote.key", "com.microsoft.word.doc", "com.microsoft.excel.xls", "com.microsoft.powerpoint.ppt"
     ]
     
-    var delegate: FilePickerControllerDelegate?
+    public var delegate: FilePickerControllerDelegate?
     
     private var _root: UIViewController?
     private var root: UIViewController? {
