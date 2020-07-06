@@ -21,6 +21,7 @@ public enum FilePickerStyle: String {
 }
 
 public class FilePickerController: UIAlertController {
+    public var obj: Any?
     /// 控制actionSheet弹出的项，目前支持【拍照，相册，文件】
     public var items: [FilePickerStyle] = [.camera, .galery, .file]
     /// 控制可以选择的文件类型
@@ -115,20 +116,16 @@ public extension FilePickerController {
     
     /// 直接选取文件（不显示界面）
     func takeFile() {
-        let documentController = UIDocumentPickerViewController(documentTypes: UTIs, in: .open)
+        let documentController = DocumentPickerController(documentTypes: UTIs, in: .open)
         documentController.modalPresentationStyle = .formSheet
         documentController.delegate = self
         
-        root?.present(documentController, animated: true) {
-            documentController.navigationItem.backBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.blue], for: .normal)
-            documentController.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.blue], for: .normal)
-        }
+        root?.present(documentController, animated: true, completion: nil)
         
     }
     
     @objc private func actionBack(_ sender: Any) {
-//        navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+        root?.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -201,12 +198,25 @@ fileprivate extension Data {
     }
     
     private func randomName() -> String {
-        return "\(Date().timeIntervalSince1970)"
+        return "\(Date().timeIntervalSince1970).jpg"
     }
 }
 
 fileprivate extension FileManager {
     func librayCachesURL() -> URL {
         return FileManager.default.urls(for: FileManager.SearchPathDirectory.cachesDirectory, in: .userDomainMask).first!
+    }
+}
+
+public class DocumentPickerController: UIDocumentPickerViewController {
+    public var obj: Any?
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: view.tintColor], for: .normal)
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
     }
 }

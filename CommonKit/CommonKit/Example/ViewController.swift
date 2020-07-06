@@ -8,15 +8,120 @@
 
 import UIKit
 import QuickLook
+import ObjectMapper
+import Moya
+
+class Hero: Mappable {
+    var hp: String?
+    var mp: String?
+    required init?(map: Map) {}
+    func mapping(map: Map) {
+        hp <- map["hp"]
+        mp <- map["mp"]
+    }
+}
+class Person: Mappable {
+    required init?(map: Map) {}
+    init() {}
+    var age: Int?
+    var name: String?
+    var hero: Hero?
+    private var tag: Any?
+    func mapping(map: Map) {
+        age <- map["age"]
+        name <- map["name"]
+        hero <- map["hero"]
+    }
+}
+
+enum Api {
+    case login(paramLogin: ParamLogin)
+}
+
+extension Api: TargetType {
+    
+    var path: String {
+        switch self {
+        case .login:
+            return "system/loginApp"
+        }
+    }
+    
+    var task: Task {
+        var params: [String: Any] = [:]
+        switch self {
+        case let .login(paramLogin):
+            params.merge(paramLogin.toJSON()) { (current, _) in current }
+        }
+        
+        return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+    }
+}
+extension Api {
+     var baseURL: URL {
+            return URL(string: "http://120.76.219.30:8000/")!
+        }
+        
+        var method: Moya.Method {
+            return .post
+        }
+        
+        var sampleData: Data {
+            return "".data(using: .utf8)!
+        }
+        
+        var headers: [String : String]? {
+            let header = ["Content-type": "application/json"]
+//            let user = User.default
+//            // 添加 token到header中
+//            if let token = user.token {
+//                header["Authorization"] = token
+//            }
+            return header
+        }
+}
+
+fileprivate extension String {
+    var utf8Encoded: Data {
+        return data(using: .utf8)!
+    }
+    
+    func isValidField() -> Bool {
+        guard count > 0, self != "--请选择--" else {
+            return false
+        }
+        return true
+    }
+}
+
+let api = MoyaProvider<Api>()
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var button: UIButton!
 
+    let vm = LoginViewModel()
     private var previewItems: [QLPreviewItem]?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let person = Person(JSON: ["name": "John S.M", "age": 28, "hero": ["hp":"hp", "mp": "mp"]])
+        let json = person?.toJSON()
+        print(json)
+        let someone = Person()
+        someone.age = 18
+        someone.name = "Someone"
+        print("someone: \(someone.toJSON())")
+        
+        let param = ParamLogin()
+        param.userName = "shimm"
+        param.password = "1234"
+        
+        vm.login(paramLogin: param).subscribe(onNext: { a in
+            print(a.toJSON())
+        }, onError: { e in
+            print(e)
+        }).disposed(by: vm.disposeBag)
     }
 
 
