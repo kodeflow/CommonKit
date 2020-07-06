@@ -100,16 +100,16 @@ public extension FilePickerController {
         cameraPicker.delegate = self
         cameraPicker.allowsEditing = false
         cameraPicker.sourceType = .photoLibrary
-        let button = UIButton(type: .custom)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        button.setTitleColor(view.tintColor, for: .normal)
-        button.setTitle("取消", for: .normal)
-        button.addTarget(self, action: #selector(self.actionBack(_:)), for: .touchUpInside)
-        cameraPicker.navigationBar.addSubview(button)
-        button.snp.makeConstraints({ (make) in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-15)
-        })
+//        let button = UIButton(type: .custom)
+//        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+//        button.setTitleColor(view.tintColor, for: .normal)
+//        button.setTitle("取消", for: .normal)
+//        button.addTarget(self, action: #selector(self.actionBack(_:)), for: .touchUpInside)
+//        cameraPicker.navigationBar.addSubview(button)
+//        button.snp.makeConstraints({ (make) in
+//            make.centerY.equalToSuperview()
+//            make.trailing.equalToSuperview().offset(-15)
+//        })
         //在需要的地方present出来
         root?.present(cameraPicker, animated: true, completion: nil)
     }
