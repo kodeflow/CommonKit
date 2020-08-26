@@ -25,7 +25,16 @@ public class FilePickerController: UIAlertController {
     /// 控制actionSheet弹出的项，目前支持【拍照，相册，文件】
     public var items: [FilePickerStyle] = [.camera, .galery, .file]
     /// 控制可以选择的文件类型
-    public var UTIs = ["public.content", "public.text", "public.source-code ", "public.image", "public.audiovisual-content", "com.adobe.pdf", "com.apple.keynote.key", "com.microsoft.word.doc", "com.microsoft.excel.xls", "com.microsoft.powerpoint.ppt"
+    public var UTIs = ["public.content",
+                       "public.text",
+                       "public.source-code",
+                       "public.image",
+                       "public.audiovisual-content",
+                       "com.adobe.pdf",
+                       "com.apple.keynote.key",
+                       "com.microsoft.word.doc",
+                       "com.microsoft.excel.xls",
+                       "com.microsoft.powerpoint.ppt"
     ]
     /// 用于选择文件后的回调，在filePicker(_ picker: , didSelect url: , and)中处理选择的文件
     public var delegate: FilePickerControllerDelegate?
@@ -115,13 +124,12 @@ public extension FilePickerController {
     }
     
     /// 直接选取文件（不显示界面）
-    func takeFile() {
-        let documentController = DocumentPickerController(documentTypes: UTIs, in: .open)
+    func takeFile(_ utis: [String]? = nil) {
+        let documentController = DocumentPickerController(documentTypes: utis ?? UTIs, in: .open)
         documentController.modalPresentationStyle = .formSheet
         documentController.delegate = self
         
         root?.present(documentController, animated: true, completion: nil)
-        
     }
     
     @objc private func actionBack(_ sender: Any) {
