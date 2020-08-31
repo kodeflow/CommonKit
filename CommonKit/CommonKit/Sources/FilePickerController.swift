@@ -220,7 +220,7 @@ public class DocumentPickerController: UIDocumentPickerViewController {
     public var obj: Any?
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: view.tintColor], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: view.tintColor as Any], for: .normal)
     }
     
     public override func viewWillDisappear(_ animated: Bool) {

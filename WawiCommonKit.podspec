@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "WawiCommonKit"
-  spec.version      = "0.0.6"
+  spec.version      = "0.0.7"
   spec.summary      = "Swift 封装的常用功能及第三方依赖"
   spec.swift_version = '5.2'
 

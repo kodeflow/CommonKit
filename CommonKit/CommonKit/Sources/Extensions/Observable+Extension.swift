@@ -10,6 +10,8 @@ import Foundation
 import RxSwift
 import ObjectMapper
 
+public var isDebug = false
+
 extension Observable {
     
     public func mapObject<T: Mappable>(type:T.Type) -> Observable<T> {
@@ -34,8 +36,10 @@ extension Observable {
             }
             
             let rawData = response as! [String: Any]
-            print("----return result----")
-            print(rawData)
+            if isDebug {
+                print("----return result----")
+                print(rawData)
+            }
 //            let code = rawData["code"] as! String
 //            let msg = rawData["msg"] as! String
 //            if "200" != code {
@@ -88,7 +92,9 @@ extension Observable {
         return self.map{ (response) in
             
             let name = type(of: response)
-            print(name)
+            if isDebug {
+                print(name)
+            }
             
             guard let dict = response as? [String:Any] else {
                 throw RxSwiftMoyaError.ParseJSONError
