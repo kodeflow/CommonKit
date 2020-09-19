@@ -15,6 +15,7 @@
 		B83BEBC1246261DB00DE0A15 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83BEBC0246261DB00DE0A15 /* BaseViewModel.swift */; };
 		B83BEBC32462640600DE0A15 /* Observable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83BEBC22462640600DE0A15 /* Observable+Extension.swift */; };
 		B854E231244B25D40085A2A8 /* FilePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B854E230244B25D40085A2A8 /* FilePickerController.swift */; };
+		B85A50492515F7C400EFCB90 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85A50482515F7C400EFCB90 /* UIImage+Extension.swift */; };
 		B8D810112446DC50000C6366 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D810102446DC50000C6366 /* AppDelegate.swift */; };
 		B8D810152446DC50000C6366 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D810142446DC50000C6366 /* ViewController.swift */; };
 		B8D810182446DC50000C6366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8D810162446DC50000C6366 /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 		B83BEBC0246261DB00DE0A15 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		B83BEBC22462640600DE0A15 /* Observable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Extension.swift"; sourceTree = "<group>"; };
 		B854E230244B25D40085A2A8 /* FilePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePickerController.swift; sourceTree = "<group>"; };
+		B85A50482515F7C400EFCB90 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		B8D8100D2446DC50000C6366 /* CommonKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommonKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D810102446DC50000C6366 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8D810142446DC50000C6366 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				B8D810452446E2C3000C6366 /* UIColor+Extension.swift */,
 				B8D810442446E2C3000C6366 /* UIView+Extension.swift */,
 				B83BEBC22462640600DE0A15 /* Observable+Extension.swift */,
+				B85A50482515F7C400EFCB90 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B85A50492515F7C400EFCB90 /* UIImage+Extension.swift in Sources */,
 				B8D810152446DC50000C6366 /* ViewController.swift in Sources */,
 				B83BEBC1246261DB00DE0A15 /* BaseViewModel.swift in Sources */,
 				B854E231244B25D40085A2A8 /* FilePickerController.swift in Sources */,

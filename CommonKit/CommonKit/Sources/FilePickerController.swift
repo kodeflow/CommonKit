@@ -150,7 +150,7 @@ extension FilePickerController: UIDocumentPickerDelegate, UIImagePickerControlle
         if let url = info[.imageURL] as? URL {
             delegate?.filePicker(self, didSelect: url, and: nil)
         } else if let image = info[.originalImage] as? UIImage {
-            delegate?.filePicker(self, didSelect: nil, and: image.pngData())
+            delegate?.filePicker(self, didSelect: nil, and: image.fixOrientation().pngData())
         } else {
             delegate?.filePicker(self, didFailedWith: .readFailedError)
         }
