@@ -206,7 +206,7 @@ fileprivate extension Data {
     }
     
     private func randomName() -> String {
-        return "\(Date().timeIntervalSince1970).jpg"
+        return "\(Date().timeIntervalSince1970)"
     }
 }
 
