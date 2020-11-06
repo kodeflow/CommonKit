@@ -12,7 +12,12 @@ public let ScreenWidth = UIScreen.main.bounds.width
 public let ScreenHeight = UIScreen.main.bounds.height
 public let StatusBarHeight = UIApplication.shared.statusBarFrame.size.height
 public let iPhone = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone)
-public let iPhoneX = (ScreenHeight >= 812.0 && ScreenWidth >= 375.0 && iPhone)
+public var iPhoneX: Bool {
+    get {
+        let bottomOffset = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        return bottomOffset > 0
+    }
+}
 public let tabBarHeight = (CGFloat)(iPhoneX ? (49.0 + 34.0) : (49.0))
 
 public extension UIView {
